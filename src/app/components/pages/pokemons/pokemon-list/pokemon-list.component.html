@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let pokemon of pokemons">
+        <div class="card">
+            <div class="image">
+                <a [routerLink]="['/pokemon-details, pokemon.id']">
+                    <img [src]="pokemon.sprite" [alt]="pokemon.name" class="card-img-top">
+                </a>
+            </div>
+            <div class="card-inner">
+                <div class="header">
+                    <a [routerLink]="['/pokemon-details, pokemon.id']">
+                        <h2>pokemon.name</h2>
+                    </a>
+                    <h4 class="text-muted">pokemon.id</h4>
+                    <small class="text-muted">pokemon.generation</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 mt-5 container-notFound">
+        <p>No results...</p>
+    </div>
+</div>
+<button class="btn btn-dark">GO UP</button>

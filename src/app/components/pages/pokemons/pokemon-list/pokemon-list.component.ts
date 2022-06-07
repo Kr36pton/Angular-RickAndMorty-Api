@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '@app/shared/interface/character.interface';
-import { CharacterService } from '@app/shared/services/character.service';
+import { Pokemon } from '@app/shared/interface/pokemon.interface';
+import { PokemonService } from '@app/shared/services/pokemon.service';
 import { take } from 'rxjs/operators';
 
 type RequestInfo = {
@@ -8,13 +8,13 @@ type RequestInfo = {
 }
 
 @Component({
-  selector: 'app-character-list',
-  templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.scss']
+  selector: 'app-pokemon-list',
+  templateUrl: './pokemon-list.component.html',
+  styleUrls: ['./pokemon-list.component.scss']
 })
-export class CharacterListComponent implements OnInit {
+export class PokemonListComponent implements OnInit {
 
-  characters: Character[] = []
+  pokemons: Pokemon[] = []
 
   info : RequestInfo = {
     next: null,
@@ -24,19 +24,19 @@ export class CharacterListComponent implements OnInit {
   private hideScrollHeight = 200
   private showScrollHeight = 500
 
-  constructor(private characterSvc: CharacterService) { }
+  constructor(private pokemonSvc: PokemonService) { }
 
   ngOnInit(): void {
     this.getDataFromService()
   }
 
   private getDataFromService():void{
-    this.characterSvc.searchCharacters(this.query, this.pageNum)
+    this.pokemonSvc.searchPokemons(this.query, this.pageNum)
     .pipe(take(1)
     ).subscribe((res:any) => {
       console.log(res)
       const{info, results} = res
-      this.characters = [...this.characters, ...results]
+      this.pokemons = [...this.pokemons, ...results]
       this.info = info
     })
   }

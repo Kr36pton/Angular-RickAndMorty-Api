@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CharacterListRoutingModule } from './character-list-routing.module';
+import { PokemonDetailsRoutingModule } from './pokemon-details-routing.module';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    CharacterListRoutingModule
+    PokemonDetailsRoutingModule
   ]
 })
-export class CharacterListModule { }
+export class PokemonDetailsModule { }
